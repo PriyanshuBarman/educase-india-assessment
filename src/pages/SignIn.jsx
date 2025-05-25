@@ -56,9 +56,10 @@ function SignIn() {
           className="mt-10 space-y-6 sm:mt-18 sm:space-y-8"
         >
           {inputFields.map((item) => (
+          <div key={item.name} className="relative">
             <fieldset
               key={item.name}
-              className="relative overflow-hidden rounded-lg border border-gray-300 transition-all focus-within:border-violet-700"
+              className="overflow-hidden rounded-lg border border-gray-300 transition-all focus-within:border-violet-700"
             >
               <legend className="ml-2 px-2 text-sm font-medium text-violet-700">
                 {item.label}
@@ -72,12 +73,13 @@ function SignIn() {
                 placeholder={`Enter ${item.label}`}
                 className="h-full w-full pb-2 pl-4 focus:outline-0"
               />
-              {errors[item.name] && (
+            </fieldset>
+            {errors[item.name] && (
                 <p className="absolute left-2 mt-0.5 text-xs text-red-500">
                   {errors[item.name]}
                 </p>
               )}
-            </fieldset>
+            </div>
           ))}
 
           <button
